@@ -1,9 +1,10 @@
 package br.com.elton.repository;
 
-public class MathRepository {
-    public MathRepository() {
-    }
+import org.springframework.stereotype.Service;
 
+@Service
+public class MathRepository {
+    
     public Double sum(Double numberOne, Double numberTwo) {
         return numberOne + numberTwo;
     }
