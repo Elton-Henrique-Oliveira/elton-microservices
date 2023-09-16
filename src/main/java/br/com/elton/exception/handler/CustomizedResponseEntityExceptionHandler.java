@@ -1,5 +1,6 @@
 package br.com.elton.exception.handler;
 
+import br.com.elton.exception.DividendCannotBeZero;
 import br.com.elton.exception.ExceptionResponse;
 import br.com.elton.exception.UnsupportedMathOperationException;
 import org.springframework.http.HttpStatus;
@@ -21,7 +22,7 @@ public class CustomizedResponseEntityExceptionHandler extends ResponseEntityExce
         return new ResponseEntity<>(exceptionResponse, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
-    @ExceptionHandler(UnsupportedMathOperationException.class)
+    @ExceptionHandler({UnsupportedMathOperationException.class,DividendCannotBeZero.class})
     public final ResponseEntity<ExceptionResponse> handleBadRequestExceptions(Exception ex, WebRequest request){
         ExceptionResponse exceptionResponse = new ExceptionResponse(new Date(), ex.getMessage(), request.getDescription(false));
         return new ResponseEntity<>(exceptionResponse, HttpStatus.BAD_REQUEST);
